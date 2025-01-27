@@ -11,7 +11,8 @@ public class MobileContact extends AbstractEntity{
 
     }
 
-    public MobileContact(String firstname, String lastname, String phoneNumber) {
+    public MobileContact(Long id, String firstname, String lastname, String phoneNumber) {
+        setId(id);
         this.firstname = firstname;
         this.lastname = lastname;
         this.phoneNumber = phoneNumber;
@@ -49,6 +50,13 @@ public class MobileContact extends AbstractEntity{
 
     @Override
     public boolean equals(Object other) {
+
+        /* if (!(other instanceof MobileContact)) return false;
+            MobileContact that = (MobileContact)  other;
+            in java 17 it does two things:
+            checks if it is instanceof and then does typecast.
+        */
+
         if (this == other) return true;
         if (!(other instanceof MobileContact that)) return false;
         return Objects.equals(firstname, that.firstname) && Objects.equals(lastname, that.lastname) && Objects.equals(phoneNumber, that.phoneNumber);
